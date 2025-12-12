@@ -7,6 +7,7 @@ use std::io::Write;
 
 mod decode;
 mod encode;
+mod segment;
 
 fn main() {
     let input = input();

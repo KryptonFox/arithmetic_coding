@@ -1,5 +1,6 @@
 use bigdecimal::BigDecimal;
 use indexmap::IndexMap;
+use crate::segment::define_segments;
 
 pub fn arithmetic_encode(
     chars_probability: &IndexMap<char, BigDecimal>,
@@ -20,25 +21,7 @@ pub fn arithmetic_encode(
     (p, q)
 }
 
-struct Segment {
-    left: BigDecimal,
-    right: BigDecimal,
-}
 
-fn define_segments(chars_probability: &IndexMap<char, BigDecimal>) -> IndexMap<char, Segment> {
-    let mut segments: IndexMap<char, Segment> = IndexMap::with_capacity(chars_probability.len());
-    let mut l = BigDecimal::from(0);
-
-    for (char, prob) in chars_probability.iter() {
-        let segment = Segment {
-            left: l.clone(),
-            right: l.clone() + prob,
-        };
-        segments.insert(*char, segment);
-        l += prob;
-    }
-    segments
-}
 
 fn q(left: &BigDecimal, right: &BigDecimal) -> i64 {
     let mut n = BigDecimal::from(1);
