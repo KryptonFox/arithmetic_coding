@@ -1,6 +1,6 @@
+use crate::segment::define_segments;
 use bigdecimal::BigDecimal;
 use indexmap::IndexMap;
-use crate::segment::define_segments;
 
 pub fn arithmetic_decode(
     chars_probability: &IndexMap<char, BigDecimal>,
